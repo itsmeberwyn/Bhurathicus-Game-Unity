@@ -46,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+            animator.SetBool("isAttacking", true);
             Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackPos.transform.position, new Vector3(0.18f, 0.4f, 0), enemy);
 
             for (int i = 0; i < enemiesToDamage.Length-2; i++)
@@ -57,6 +57,13 @@ public class PlayerAttack : MonoBehaviour
                     enemiesToDamage[i]?.GetComponent<Enemy>()?.TakeDamage(attackDamage);
                 }
             }
+
+
+        }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            animator.SetBool("isAttacking", false);
         }
 
         if (timeBtwAttack <= 0)

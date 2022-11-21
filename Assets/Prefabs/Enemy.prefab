@@ -15,7 +15,8 @@ GameObject:
   - component: {fileID: 4079664662003608466}
   - component: {fileID: 4079664662003608461}
   - component: {fileID: 4079664662003608460}
-  m_Layer: 0
+  - component: {fileID: 937861759}
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -103,6 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 4079664661416234001}
+  startTimeBtwAttack: 0.5
 --- !u!58 &4079664662003608467
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -160,7 +162,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -186,6 +188,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &937861759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079664662003608463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14be32a72e98db94d8442407a50a8bd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifebar: 20
 --- !u!1001 &4950102653476895267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,6 +211,10 @@ PrefabInstance:
     - target: {fileID: 8948561509162202674, guid: 0a8fe15ac17bec54b9b4a3481b623537, type: 3}
       propertyPath: m_Name
       value: enemy_attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948561509162202674, guid: 0a8fe15ac17bec54b9b4a3481b623537, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8948561509162202674, guid: 0a8fe15ac17bec54b9b4a3481b623537, type: 3}
       propertyPath: m_IsActive
