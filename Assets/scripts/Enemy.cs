@@ -19,8 +19,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log(lifebar);
         lifebar -= damage;
+        Debug.Log(lifebar);
         if(lifebar <= 0)
         {
             Object.Destroy(this.gameObject);
