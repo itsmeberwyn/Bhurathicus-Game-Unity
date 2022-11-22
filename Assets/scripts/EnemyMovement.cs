@@ -114,6 +114,7 @@ public class EnemyMovement : MonoBehaviour
         }
 
 
+        
 
         //if (target)
         //{
@@ -141,11 +142,16 @@ public class EnemyMovement : MonoBehaviour
 
     public void triggerAttack()
     {
+        InvokeRepeating("attackAnimation", 1, Random.Range(3,5));
+        attacking = !attacking;
+    }
+
+    private void attackAnimation()
+    {
+        Debug.Log("Attack!");
         animator.SetBool("isWalking", false);
         animator.SetBool("Spawn", false);
         animator.SetBool("Attack", true);
-
-        attacking = !attacking;
     }
 
 }

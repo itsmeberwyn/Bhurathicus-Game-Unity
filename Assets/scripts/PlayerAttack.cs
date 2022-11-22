@@ -8,7 +8,6 @@ public class PlayerAttack : MonoBehaviour
     public float startTimeBtwAttack;
     public Transform attackPos;
     public LayerMask enemy;
-    public float attackRange;
     public int attackDamage;
 
     private Animator animator;
@@ -47,12 +46,14 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetBool("isAttacking", true);
-            Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackPos.transform.position, new Vector3(0.18f, 0.4f, 0), enemy);
-
-            for (int i = 0; i < enemiesToDamage.Length-2; i++)
+            Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackPos.transform.position, new Vector3(0.18f, 0.3f, 0),  enemy);
+   
+            for (int i = 0; i < enemiesToDamage.Length; i++)
             {
-                Debug.Log(enemiesToDamage[i].name);
-                if(enemiesToDamage[i].name == "Enemy")
+                //Debug.Log(enemiesToDamage[i].tag);
+                //Debug.Log(enemiesToDamage[i].GetType() == typeof(BoxCollider2D));
+                
+                if (enemiesToDamage[i].tag == "Enemy" && enemiesToDamage[i].GetType() == typeof(BoxCollider2D))
                 {
                     enemiesToDamage[i]?.GetComponent<Enemy>()?.TakeDamage(attackDamage);
                 }
@@ -83,5 +84,11 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireCube(attackPos.transform.position, new Vector3(0.18f, 0.3f, 0));
 
         //Gizmos.DrawWireCube(attackPos.transform.position, new Vector3(0.18f,0.2f,0));
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(attackPos.transform.position, new Vector3(0.18f, 0.3f, 0));
     }
 }
