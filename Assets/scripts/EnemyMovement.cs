@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public int damage = 2;
     private float moveSpeed = 0.5f;
     private Transform target;
 
@@ -140,10 +141,11 @@ public class EnemyMovement : MonoBehaviour
     {
     }
 
-    public void triggerAttack()
+    public int triggerAttack()
     {
-        InvokeRepeating("attackAnimation", 1, Random.Range(3,5));
+        InvokeRepeating("attackAnimation", 2, Random.Range(3,5));
         attacking = !attacking;
+        return damage;
     }
 
     private void attackAnimation()
@@ -152,6 +154,8 @@ public class EnemyMovement : MonoBehaviour
         animator.SetBool("isWalking", false);
         animator.SetBool("Spawn", false);
         animator.SetBool("Attack", true);
+
     }
+
 
 }

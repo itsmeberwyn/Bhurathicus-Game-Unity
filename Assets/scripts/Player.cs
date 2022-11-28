@@ -10,15 +10,30 @@ public class Player : MonoBehaviour
     private RaycastHit2D hit;
     private Animator animator;
 
+    public HealthBar healthBar;
+
+    private int maxHealth = 100;
+    public int currentHealth;
+
+    public bool isDead = false;
+    private int damageReceive = 0;
+
 
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
+        healthBar.setMaxHealth(maxHealth);
     }
 
     void FixedUpdate()
     {
+        if (isDead)
+        {
+            Destroy(gameObject);
+        }
         // get keybinds
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
@@ -73,8 +88,10 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy" && other.GetType() == typeof(BoxCollider2D))
         {
-            //Debug.Log(other.GetComponent);
-            other.GetComponent<EnemyMovement>().triggerAttack();
+
+            damageReceive = other.GetComponent<EnemyMovement>().triggerAttack();
+            
+            InvokeRepeating("PlayerDamage", 2, Random.Range(3, 5));
 
             //FindObjectOfType<EnemyMovement>().triggerAttack();
             //StageUtility.GetCurrentStageHandle().FindComponentOfType<EnemyMovement>().triggerAttack();
@@ -90,6 +107,23 @@ public class Player : MonoBehaviour
             //FindObjectOfType<EnemyMovement>().triggerAttack();
             //StageUtility.GetCurrentStageHandle().FindComponentOfType<EnemyMovement>().triggerAttack();
 
+        }
+    }
+
+    private void PlayerDamage()
+    {
+        TakeDamage(damageReceive);
+    }
+
+
+    private void TakeDamage(int damage)
+    {
+        Debug.Log(currentHealth + " " + damage);
+        currentHealth -= damage;
+        healthBar.setHealth(currentHealth);
+        if (currentHealth <= 0)
+        {
+            isDead = true;
         }
     }
 }
