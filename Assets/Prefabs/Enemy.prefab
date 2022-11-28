@@ -103,6 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2694ea1c7c1fe347a39a9e641a8038d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  player: {fileID: 0}
   attack: {fileID: 4079664661416234001}
   startTimeBtwAttack: 0.5
 --- !u!58 &4079664662003608467
