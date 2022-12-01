@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -33,6 +34,7 @@ public class Player : MonoBehaviour
         if (isDead)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene("EndScene");
         }
         // get keybinds
         float x = Input.GetAxisRaw("Horizontal");
@@ -91,7 +93,7 @@ public class Player : MonoBehaviour
 
             damageReceive = other.GetComponent<EnemyMovement>().triggerAttack();
             
-            InvokeRepeating("PlayerDamage", 2, Random.Range(3, 5));
+            InvokeRepeating("PlayerDamage", 0, 0.5f);
 
             //FindObjectOfType<EnemyMovement>().triggerAttack();
             //StageUtility.GetCurrentStageHandle().FindComponentOfType<EnemyMovement>().triggerAttack();
@@ -103,6 +105,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Enemy" && other.GetType() == typeof(BoxCollider2D))
         {
             other.GetComponent<EnemyMovement>().triggerAttack();
+            CancelInvoke("PlayerDamage");
 
             //FindObjectOfType<EnemyMovement>().triggerAttack();
             //StageUtility.GetCurrentStageHandle().FindComponentOfType<EnemyMovement>().triggerAttack();
