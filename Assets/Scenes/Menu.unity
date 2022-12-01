@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 1959533}
   - component: {fileID: 1959532}
   - component: {fileID: 1959531}
+  - component: {fileID: 1959535}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -229,6 +230,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1959535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cadd0011304a9df4596572132d49aa19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _img: {fileID: 0}
+  _default: {fileID: 0}
+  _pressed: {fileID: 0}
 --- !u!1 &192461644
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,7 +557,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -814,13 +830,14 @@ GameObject:
   - component: {fileID: 1572236959}
   - component: {fileID: 1572236961}
   - component: {fileID: 1572236960}
+  - component: {fileID: 1572236962}
   m_Layer: 5
   m_Name: exitBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1572236959
 RectTransform:
   m_ObjectHideFlags: 0
@@ -879,6 +896,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572236958}
   m_CullTransparentMesh: 1
+--- !u!114 &1572236962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572236958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1572236960}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1959535}
+        m_TargetAssemblyTypeName: BTNclick, Assembly-CSharp
+        m_MethodName: exitClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1855503133
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +964,6 @@ GameObject:
   - component: {fileID: 1855503136}
   - component: {fileID: 1855503135}
   - component: {fileID: 1855503137}
-  - component: {fileID: 1855503138}
   m_Layer: 5
   m_Name: playBTN
   m_TagString: Untagged
@@ -916,7 +988,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000036955, y: 0.0000019073486}
+  m_AnchoredPosition: {x: -0.0000036955, y: -25.95}
   m_SizeDelta: {x: 132.7131, y: 78.0176}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1855503135
@@ -1000,19 +1072,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1855503135}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1855503138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1855503133}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cadd0011304a9df4596572132d49aa19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _img: {fileID: 1855503135}
-  _default: {fileID: 21300000, guid: 04d9b8e24eca1ee47ab2b122e05cea9b, type: 3}
-  _pressed: {fileID: 21300000, guid: d5d8a1f14fff8b5439eacb42445cfcc1, type: 3}
+      m_Calls:
+      - m_Target: {fileID: 1959535}
+        m_TargetAssemblyTypeName: BTNclick, Assembly-CSharp
+        m_MethodName: startGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
