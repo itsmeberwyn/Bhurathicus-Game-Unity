@@ -21,6 +21,9 @@ public class PlayerCamera : MonoBehaviour
         // if we try to go out of the bound we move the camera along the player movement
 
         // checker if we're inside the bounds on the X axis
+        if(lookAt == null){
+            return;
+        }
         float deltaX = lookAt.position.x - transform.position.x;
         if (deltaX > boundX || deltaX < -boundX)
         {
