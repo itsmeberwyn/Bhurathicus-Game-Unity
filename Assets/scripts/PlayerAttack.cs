@@ -47,6 +47,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            float knockbackforce = 2f;
             animator.SetBool("isAttacking", true);
             Collider2D[] enemiesToDamage = Physics2D.OverlapBoxAll(attackPos.transform.position, new Vector3(0.18f, 0.3f, 0),  enemy);
    
@@ -57,6 +58,14 @@ public class PlayerAttack : MonoBehaviour
                 
                 if (enemiesToDamage[i].tag == "Enemy" && enemiesToDamage[i].GetType() == typeof(BoxCollider2D))
                 {
+                    Vector2 direction = (enemiesToDamage[i].transform.position - transform.position).normalized;
+                    Vector2 knockback = direction * knockbackforce;
+                    enemiesToDamage[i].GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
+                    enemiesToDamage[i].GetComponent<FlashBlink>().Flash();
+
+
+                    StartCoroutine(Reset(enemiesToDamage[i].GetComponent<Rigidbody2D>()));
+
                     int kill = (int)(enemiesToDamage[i]?.GetComponent<Enemy>()?.TakeDamage(attackDamage));
                     this.kill += kill;
                 }
@@ -79,6 +88,12 @@ public class PlayerAttack : MonoBehaviour
 
             timeBtwAttack -= Time.deltaTime;
         }
+    }
+
+    private IEnumerator Reset(Rigidbody2D enemy)
+    {
+        yield return new WaitForSeconds(0.15f);
+        enemy.velocity = Vector2.zero;
     }
 
     private void OnDrawGizmosSelected()

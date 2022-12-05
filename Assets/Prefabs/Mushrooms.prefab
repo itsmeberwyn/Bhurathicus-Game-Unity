@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4079664662003608466}
   - component: {fileID: 4079664662003608461}
   - component: {fileID: 4079664662003608460}
+  - component: {fileID: -8093715776519019695}
   - component: {fileID: 937861759}
   m_Layer: 9
   m_Name: Mushrooms
@@ -189,6 +190,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8093715776519019695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4079664662003608463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e9424c55d9aab4f89a82b457b56d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: d1a406f6f2755dd4ca1b7d09cf7a75a3, type: 2}
+  duration: 0.125
 --- !u!114 &937861759
 MonoBehaviour:
   m_ObjectHideFlags: 0
