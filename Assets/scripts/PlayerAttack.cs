@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackPos;
     public LayerMask enemy;
     public int attackDamage;
+    public int kill = 0;
 
     private Animator animator;
 
@@ -55,7 +57,8 @@ public class PlayerAttack : MonoBehaviour
                 
                 if (enemiesToDamage[i].tag == "Enemy" && enemiesToDamage[i].GetType() == typeof(BoxCollider2D))
                 {
-                    enemiesToDamage[i]?.GetComponent<Enemy>()?.TakeDamage(attackDamage);
+                    int kill = (int)(enemiesToDamage[i]?.GetComponent<Enemy>()?.TakeDamage(attackDamage));
+                    this.kill += kill;
                 }
             }
 

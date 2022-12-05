@@ -57,7 +57,7 @@ public class EnemyMovement : MonoBehaviour
 
             hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0,
                 new Vector2(0, moveDirection.y), Mathf.Abs(moveDirection.y * Time.deltaTime),
-                LayerMask.GetMask("Player", "Tree"));
+                LayerMask.GetMask("Player", "Tree", "Wall", "Wall2", "Wall3"));
 
             if (hit.collider == null && (moveDirection.x != 0 || moveDirection.y != 0)) 
             {
@@ -69,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
 
             hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0,
                 new Vector2(moveDirection.x, 0), Mathf.Abs(moveDirection.x * Time.deltaTime),
-                LayerMask.GetMask("Player", "Tree"));
+                LayerMask.GetMask("Player", "Tree", "Wall", "Wall2", "Wall3"));
 
             if (hit.collider == null && (moveDirection.x != 0 || moveDirection.y != 0))
             {
