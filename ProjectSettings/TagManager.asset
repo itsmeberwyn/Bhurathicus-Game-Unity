@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Wall
+  - Wall2
+  - Wall3
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - Player
   - Tree
   - Enemy
-  - 
+  - Wall
   - 
   - 
   - 

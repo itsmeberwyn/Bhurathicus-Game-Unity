@@ -13,12 +13,11 @@ public class Player : MonoBehaviour
 
     public HealthBar healthBar;
 
-    private int maxHealth = 100;
-    public int currentHealth;
+    private float maxHealth = 100;
+    public float currentHealth;
 
     public bool isDead = false;
     private int damageReceive = 0;
-
 
     void Start()
     {
@@ -36,6 +35,14 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
             SceneManager.LoadScene("EndScene");
         }
+
+        Debug.Log(currentHealth);
+        if (currentHealth < maxHealth)
+        {
+            currentHealth += 0.01f;
+            healthBar.setHealth(currentHealth);
+        }
+
         // get keybinds
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
@@ -56,7 +63,21 @@ public class Player : MonoBehaviour
         // phyics collider for Y axis using layer
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0,
             new Vector2(0, moveDelta.y), Mathf.Abs(moveDelta.y * Time.deltaTime),
-            LayerMask.GetMask("Player", "Tree"));
+            LayerMask.GetMask("Player", "Tree", "Wall", "Wall2", "Wall3"));
+
+        int kill = (int)(GetComponent<PlayerAttack>()?.kill);
+        GameObject wall1 = GameObject.FindGameObjectWithTag("Wall");
+        GameObject wall2 = GameObject.FindGameObjectWithTag("Wall2");
+
+        if (kill == 5 && wall1 != null)
+        {
+            wall1.SetActive(false);
+        }else if (kill == 10 && wall1 != null)
+        {
+            wall2.SetActive(false);
+        }
+
+
 
         if (hit.collider == null)
         {
@@ -69,7 +90,7 @@ public class Player : MonoBehaviour
         // phyics collider for X axis using layer
         hit = Physics2D.BoxCast(transform.position, boxCollider.size, 0,
             new Vector2(moveDelta.x, 0), Mathf.Abs(moveDelta.x * Time.deltaTime),
-            LayerMask.GetMask("Player", "Tree"));
+            LayerMask.GetMask("Player", "Tree", "Wall", "Wall2", "Wall3"));
 
         if (hit.collider == null)
         {

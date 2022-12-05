@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -17,13 +18,14 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damage)
+    public int TakeDamage(int damage)
     {
         lifebar -= damage;
-        Debug.Log(lifebar);
         if(lifebar <= 0)
         {
             Object.Destroy(this.gameObject);
+            return 1;
         }
+        return 0;
     }
 }
