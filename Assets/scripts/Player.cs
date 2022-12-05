@@ -69,10 +69,10 @@ public class Player : MonoBehaviour
         GameObject wall1 = GameObject.FindGameObjectWithTag("Wall");
         GameObject wall2 = GameObject.FindGameObjectWithTag("Wall2");
 
-        if (kill == 5 && wall1 != null)
+        if (kill == 13 && wall1 != null)
         {
             wall1.SetActive(false);
-        }else if (kill == 10 && wall1 != null)
+        }else if (kill == 26 && wall1 != null)
         {
             wall2.SetActive(false);
         }

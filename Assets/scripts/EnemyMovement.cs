@@ -84,7 +84,7 @@ public class EnemyMovement : MonoBehaviour
                 animator.SetBool("isWalking", true);
             }
 
-        }else
+        } else
         {
             if (timeBtwAttack <= 0)
             {
