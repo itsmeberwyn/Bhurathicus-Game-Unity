@@ -64,7 +64,7 @@ public class PlayerAttack : MonoBehaviour
                     enemiesToDamage[i].GetComponent<FlashBlink>().Flash();
 
 
-                    StartCoroutine(Reset(enemiesToDamage[i].GetComponent<Rigidbody2D>()));
+                    StartCoroutine(Reset(enemiesToDamage[i]?.GetComponent<Rigidbody2D>()));
 
                     int kill = (int)(enemiesToDamage[i]?.GetComponent<Enemy>()?.TakeDamage(attackDamage));
                     this.kill += kill;
@@ -93,7 +93,13 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator Reset(Rigidbody2D enemy)
     {
         yield return new WaitForSeconds(0.15f);
-        enemy.velocity = Vector2.zero;
+        try
+        {
+            enemy.velocity = Vector2.zero;
+        }catch(Exception e)
+        {
+            Debug.LogError(e.ToString());
+        }
     }
 
     private void OnDrawGizmosSelected()
