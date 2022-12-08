@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -75,6 +74,9 @@ public class Player : MonoBehaviour
         }else if (kill == 26 && wall1 != null)
         {
             wall2.SetActive(false);
+        }else if (kill == 33)
+        {
+            SceneManager.LoadScene("Win");
         }
 
 

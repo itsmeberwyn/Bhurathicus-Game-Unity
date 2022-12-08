@@ -98,7 +98,7 @@ public class PlayerAttack : MonoBehaviour
             enemy.velocity = Vector2.zero;
         }catch(Exception e)
         {
-            Debug.LogError(e.ToString());
+            Debug.Log(e.ToString());
         }
     }
 

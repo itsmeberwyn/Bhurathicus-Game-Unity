@@ -15,6 +15,6 @@ public class KillsUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        kills.text = "Kills: " + FindObjectOfType<PlayerAttack>().kill;
+        kills.text = "Kills: " + FindObjectOfType<PlayerAttack>()?.kill;
     }
 }

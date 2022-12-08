@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class EndGameBtnClick : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -20,7 +21,10 @@ public class EndGameBtnClick : MonoBehaviour
     public void exitClick()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 
     public void retryClick()
