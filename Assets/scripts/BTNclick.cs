@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class BTNclick : MonoBehaviour
 {
     public void startGame()
@@ -15,7 +16,9 @@ public class BTNclick : MonoBehaviour
     public void exitClick()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 
 }
