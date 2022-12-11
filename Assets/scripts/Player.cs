@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         if (kill == 13 && wall1 != null)
         {
             wall1.SetActive(false);
-        }else if (kill == 26 && wall1 != null)
+        }else if (kill == 26 && wall2 != null)
         {
             wall2.SetActive(false);
         }else if (kill == 33)
