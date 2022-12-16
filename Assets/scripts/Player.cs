@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     {
         if (isDead)
         {
+            Debug.Log(GetComponent<Timer>().timerText.text);
+            PlayerPrefs.SetString("record", GetComponent<Timer>().timerText.text);
             Destroy(gameObject);
             SceneManager.LoadScene("EndScene");
         }
